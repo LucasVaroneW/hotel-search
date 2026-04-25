@@ -4,10 +4,13 @@ import java.time.LocalDate;
 import java.util.List;
 import java.util.UUID;
 
+import org.springframework.stereotype.Component;
+
 import com.hotelsearch.domain.model.HotelSearch;
 import com.hotelsearch.domain.port.in.CreateSearchPort;
 import com.hotelsearch.domain.port.out.SearchEventPublisher;
 
+@Component
 public class CreateSearchUseCase implements CreateSearchPort {
 
     private final SearchEventPublisher eventPublisher;
