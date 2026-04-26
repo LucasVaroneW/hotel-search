@@ -3,6 +3,7 @@ package com.hotelsearch.infrastructure.adapter.in.web;
 import java.time.LocalDate;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.hotelsearch.domain.port.in.GetSearchCountPort.SearchCountResult;
 
@@ -13,8 +14,8 @@ public record SearchCountResponse(
 ) {
     public record SearchDetail(
         String hotelId,
-        @JsonProperty("checkIn") LocalDate checkInDate,
-        @JsonProperty("checkOut") LocalDate checkOutDate,
+        @JsonProperty("checkIn") @JsonFormat(pattern = "dd/MM/yyyy") LocalDate checkInDate,
+        @JsonProperty("checkOut") @JsonFormat(pattern = "dd/MM/yyyy") LocalDate checkOutDate,
         List<Integer> ages
     ) {}
 

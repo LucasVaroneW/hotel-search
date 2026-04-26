@@ -48,8 +48,8 @@ public class SearchControllerTest {
             .content("""
                 {
                     "hotelId": "ABC123",
-                    "checkIn": "2026-04-22",
-                    "checkOut": "2026-04-25",
+                    "checkIn": "22/04/2026",
+                    "checkOut": "25/04/2026",
                     "ages": [30, 28]
                 }
             """))

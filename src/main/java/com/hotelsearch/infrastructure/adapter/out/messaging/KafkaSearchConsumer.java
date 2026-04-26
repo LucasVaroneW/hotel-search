@@ -19,7 +19,7 @@ public class KafkaSearchConsumer {
         this.objectMapper = objectMapper;
     }
 
-    @KafkaListener(topics = "hotel_availability_searches", groupId = "hotel_search_group")
+    @KafkaListener(topics = "hotel_availability_searches", groupId = "hotel-search-group")
     public void consumeSearchEvent(String message) {
         try {
             HotelSearch hotelSearch = objectMapper.readValue(message, HotelSearch.class);

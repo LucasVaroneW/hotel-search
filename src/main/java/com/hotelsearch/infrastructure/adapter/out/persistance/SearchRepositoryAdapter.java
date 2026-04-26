@@ -32,7 +32,7 @@ public class SearchRepositoryAdapter implements SearchRepositoryPort {
 
     @Override
     public Optional<HotelSearch> findSearchById(String searchId) {
-        return jpaSearchRepository.findById(searchId).map((SearchEntity entity) -> toDomain(entity));
+        return jpaSearchRepository.findById(searchId).map(this::toDomain);
     }
 
     @Override
@@ -52,7 +52,7 @@ public class SearchRepositoryAdapter implements SearchRepositoryPort {
     private HotelSearch toDomain(SearchEntity entity) {
         List<Integer> ages = Arrays.stream(entity.getAges().split(","))
             .map(Integer::parseInt)
-            .collect(Collectors.toList());
+            .toList();
         return new HotelSearch(
             entity.getSearchId(),
             entity.getHotelId(),
