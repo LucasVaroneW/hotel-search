@@ -38,8 +38,8 @@ public class GlobalExceptionHandlerTest {
                 .content("""
                     {
                         "hotelId": "ABC123",
-                        "checkInDate": "2026-04-25",
-                        "checkOutDate": "2026-04-22",
+                        "checkIn": "2026-04-25",
+                        "checkOut": "2026-04-22",
                         "ages": [30, 28]
                     }
                 """))

@@ -48,8 +48,8 @@ public class SearchControllerTest {
             .content("""
                 {
                     "hotelId": "ABC123",
-                    "checkInDate": "2026-04-22",
-                    "checkOutDate": "2026-04-25",
+                    "checkIn": "2026-04-22",
+                    "checkOut": "2026-04-25",
                     "ages": [30, 28]
                 }
             """))
@@ -70,14 +70,12 @@ public class SearchControllerTest {
         when(getSearchCountPort.getCount("id-1"))
             .thenReturn(result);
         
-        mockMvc.perform(get("/search/count")
-            .param("searchId", "id-1")
-            .contentType("application/json")
-            )
+        mockMvc.perform(get("/count")
+            .param("searchId", "id-1"))
             .andExpect(status().isOk())
             .andExpect(jsonPath("$.searchId").value("id-1"))
-            .andExpect(jsonPath("$.count").value(5L)
-        );
+            .andExpect(jsonPath("$.count").value(5))
+            .andExpect(jsonPath("$.search.hotelId").value("ABC123"));
     }
     
 }

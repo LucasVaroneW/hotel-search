@@ -6,12 +6,10 @@ import org.springframework.web.bind.annotation.*;
 
 import com.hotelsearch.domain.port.in.CreateSearchPort;
 import com.hotelsearch.domain.port.in.GetSearchCountPort;
-import com.hotelsearch.domain.port.in.GetSearchCountPort.SearchCountResult;
 
 import java.util.Map;
 
 @RestController
-@RequestMapping("/search")
 public class SearchController {
 
     private final CreateSearchPort createSearchPort;
@@ -22,7 +20,7 @@ public class SearchController {
         this.getSearchCountPort = getSearchCountPort;
     }
 
-    @PostMapping
+    @PostMapping("/search")
     @ResponseStatus(HttpStatus.CREATED)
     public Map<String, String> createSearch(@Valid @RequestBody SearchRequest request) {
         String searchId = createSearchPort.createSearch(
@@ -35,7 +33,7 @@ public class SearchController {
     }
 
     @GetMapping("/count")
-    public SearchCountResult getCount(@RequestParam String searchId) {
-        return getSearchCountPort.getCount(searchId);
+    public SearchCountResponse getCount(@RequestParam String searchId) {
+        return SearchCountResponse.from(getSearchCountPort.getCount(searchId));
     }
 }
